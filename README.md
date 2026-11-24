@@ -1,5 +1,9 @@
 # Industrial data onboarding: messy plant data to a clean asset model (PySpark)
 
+![Demo: pipeline log, data-quality dashboard, review queue, asset model and second-customer onboarding](docs/demo.gif)
+
+*24-second walkthrough of a real run: pipeline output, data-quality report, review queue, asset model and queries, then the second customer onboarded by config. [MP4 version](docs/demo.mp4); re-record with `make demo`.*
+
 A small, finished prototype of what a forward-deployed data engineer does in the first days with a new industrial customer: take exports from disconnected systems, make them comparable, resolve asset names, measure data quality, expose the result through SQL, and onboard a second site with configuration only. All data is synthetic; every plant, asset and name is invented.
 
 ## Problem
@@ -69,7 +73,7 @@ make test    # pytest, local SparkSession
 make run     # generate data, run both customers, write reports, dashboards, DuckDB files
 ```
 
-Outputs go to `output/<customer>/`: `model/` (Parquet), `quarantine/`, `dq_report.md/.json`, `entity_review_queue.csv`, `eval/`, `sql_results/`, `model.duckdb`, `dashboard.html`; plus `output/onboarding_diff.html`. Generated data and outputs are not versioned; small samples are in [`docs/sample_output/`](docs/sample_output/). `make setup-dev && make screenshots` re-renders the images below (needs a Chrome or Chromium binary).
+Outputs go to `output/<customer>/`: `model/` (Parquet), `quarantine/`, `dq_report.md/.json`, `entity_review_queue.csv`, `eval/`, `sql_results/`, `model.duckdb`, `dashboard.html`; plus `output/onboarding_diff.html`. Generated data and outputs are not versioned; small samples are in [`docs/sample_output/`](docs/sample_output/). `make setup-dev && make screenshots` re-renders the images below and `make demo` re-records the GIF (needs a Chrome or Chromium binary).
 
 ### Onboarding a new customer
 

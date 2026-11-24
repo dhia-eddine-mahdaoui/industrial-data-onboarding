@@ -7,7 +7,7 @@ JAVA_HOME ?= $(shell $(PYTHON) -c "import jdk4py,sys; sys.stdout.write(str(jdk4p
 export JAVA_HOME
 export PATH := $(JAVA_HOME)/bin:$(PATH)
 
-.PHONY: setup setup-dev data run test screenshots clean
+.PHONY: setup setup-dev data run test screenshots demo clean
 
 setup:
 	python3 -m venv $(VENV)
@@ -32,6 +32,12 @@ test:
 # Needs the optional dev requirements (playwright) and a Chromium or Chrome binary.
 screenshots:
 	$(PYTHON) scripts/take_screenshots.py
+
+# Re-record docs/demo.gif from a fresh run (needs the dev requirements).
+demo:
+	mkdir -p output
+	$(MAKE) run > output/run.log 2>&1
+	$(PYTHON) scripts/record_demo.py
 
 clean:
 	rm -rf data/raw output spark-warehouse

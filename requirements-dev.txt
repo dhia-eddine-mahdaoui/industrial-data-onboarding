@@ -1,3 +1,4 @@
 -r requirements.txt
 # only for `make screenshots`; uses a system Chrome/Chromium, no browser download
 playwright==1.49.1
+imageio-ffmpeg==0.5.1
