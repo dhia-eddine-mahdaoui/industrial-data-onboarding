@@ -1,0 +1,12 @@
+asset_id,asset_name,last_maintenance_at,hours_since_last_maintenance
+PMP-01A,Feed Pump 1A,2026-09-16 11:00:00,348.5
+FAN-01,Cooling Fan 1,2026-09-24 08:00:00,159.5
+HX-01,Heat Exchanger 1,2026-09-25 15:00:00,128.5
+PMP-03A,Feed Pump 3A,2026-09-26 16:00:00,103.5
+CMP-01,Air Compressor 1,2026-09-27 14:00:00,81.5
+PMP-02A,Feed Pump 2A,2026-09-28 11:00:00,60.5
+TNK-01,Buffer Tank 1,2026-09-28 15:00:00,56.5
+UNREG-MIXERMTR2,Mixer Motor 2,2026-09-30 06:00:00,17.5
+CMP-02,Air Compressor 2,2026-09-30 09:00:00,14.5
+PMP-03B,Dosing Pump 3B,2026-09-30 10:00:00,13.5
+MTR-01,Mixer Motor 1,2026-09-30 14:00:00,9.5

@@ -1,0 +1,6 @@
+source,raw_name,status,confidence,predicted,truth
+maintenance,MPP-03B,review,0.8,Dosing Pump 3B,Dosing Pump 3B
+maintenance,Miexr Motor 1,review,0.889,Mixer Motor 1,Mixer Motor 1
+maintenance,P-1A,review,0.75,Feed Pump 1A,Feed Pump 1A
+maintenance,P-3A (north),review,0.75,Feed Pump 3A,Feed Pump 3A
+maintenance,Pup 1A,review,0.8,Feed Pump 1A,Feed Pump 1A

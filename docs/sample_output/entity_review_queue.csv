@@ -1,0 +1,8 @@
+source,raw_name,suggested_asset_id,confidence,status,second_candidate
+maintenance,Compressor C-7,CMP-01,0.8,review,CMP-02
+maintenance,MPP-03B,PMP-03B,0.8,review,PMP-03A
+maintenance,Miexr Motor 1,MTR-01,0.889,review,UNREG-MIXERMTR2
+maintenance,P-1A,PMP-01A,0.75,review,CMP-01
+maintenance,P-3A (north),PMP-03A,0.75,review,PMP-01A
+maintenance,Pump 9,,0.667,unmatched,PMP-02A
+maintenance,Pup 1A,PMP-01A,0.8,review,PMP-02A

@@ -1,0 +1,90 @@
+# Onboarding config for plant_alpha (synthetic sample, three source systems).
+# Everything customer-specific lives here: column headers, timestamp formats,
+# unit tables, sensor names, asset-name normalisation and DQ thresholds.
+customer: plant_alpha
+display_name: Plant Alpha (synthetic)
+
+session:
+  timezone: UTC                      # all timestamps are normalised to UTC
+
+readings:
+  path: data/raw/plant_alpha/readings_export.csv
+  columns:                           # canonical name -> header in the customer export
+    timestamp: timestamp
+    equipment: equipment
+    sensor: sensor
+    value: value
+    unit: unit
+  offset_formats:                    # timestamps that carry an offset or a Z
+    - "yyyy-MM-dd'T'HH:mm:ssXXX"
+  naive_formats:                     # wall-clock timestamps without offset
+    - "dd/MM/yyyy HH:mm"
+  naive_timezone: Europe/Berlin      # zone used to interpret naive timestamps
+  epoch_seconds: true                # accept unix epoch seconds
+  sensor_map:                        # lower-cased raw label -> canonical sensor
+    brg_temp: {name: bearing_temperature, quantity: temperature}
+    disch_press: {name: discharge_pressure, quantity: pressure}
+  unit_conversions:                  # lower-cased raw unit -> SI: value * scale + offset
+    c:    {quantity: temperature, scale: 1.0, offset: 0.0}
+    degf: {quantity: temperature, scale: 0.5555556, offset: -17.777778}
+    bar:  {quantity: pressure, scale: 100.0, offset: 0.0}        # bar -> kPa
+    psi:  {quantity: pressure, scale: 6.894757, offset: 0.0}     # psi -> kPa
+  valid_range:                       # SI, checked after conversion
+    bearing_temperature: [-20.0, 150.0]
+    discharge_pressure: [0.0, 2000.0]
+  spike_delta:                       # SI jump vs previous sample that is flagged
+    bearing_temperature: 25.0
+    discharge_pressure: 300.0
+  gap_minutes: 120
+  baseline_days: 7                   # anomaly baseline = first N days of each series
+  anomaly_z: 3.0
+
+maintenance:
+  path: data/raw/plant_alpha/maintenance_log.csv
+  columns:
+    wo_number: wo_number
+    asset_text: asset_text
+    opened: opened_date
+    activity_type: activity_type
+    is_failure: is_failure
+  date_format: "dd.MM.yyyy HH:mm"
+  naive_timezone: Europe/Berlin
+  failure_values: ["Y"]
+
+asset_register:
+  path: data/raw/plant_alpha/asset_register.json
+  records_key: assets
+  asset_id: asset_id
+  name: name
+  asset_class: asset_class
+  area: area
+  alias_fields: [legacy_names]       # renamed assets: old names become aliases
+
+entity_resolution:
+  stopwords: [north, south, old, unit, asset, the]
+  abbreviations:
+    pump: pmp
+    compressor: cmp
+    motor: mtr
+    exchanger: hx
+    tank: tnk
+  auto_accept: 0.92
+  review_min: 0.75
+  ambiguity_margin: 0.02
+
+evaluation:
+  ground_truth: data/raw/plant_alpha/ground_truth_entities.csv   # labels written by the generator; optional
+
+dq_thresholds:
+  fail_on_breach: true
+  readings_null_value_rate_max: 0.02
+  readings_unparseable_timestamp_rate_max: 0.005
+  readings_unknown_unit_rate_max: 0.005
+  readings_quantity_mismatch_rate_max: 0.001
+  readings_out_of_range_rate_max: 0.02
+  readings_unmatched_asset_rate_max: 0.01
+  readings_duplicate_rate_max: 0.05
+  maintenance_unparseable_timestamp_rate_max: 0.01
+  maintenance_unmatched_asset_rate_max: 0.20  # review queue a person can clear
+  maintenance_duplicate_rate_max: 0.10
+  register_missing_id_max: 2

@@ -1,0 +1,5 @@
+source,status,distinct_names,avg_confidence
+maintenance,matched,26,0.998
+maintenance,review,6,0.798
+maintenance,unmatched,1,0.667
+readings,matched,27,1.0

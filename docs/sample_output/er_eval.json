@@ -1,0 +1,119 @@
+{
+  "overall": {
+    "names": 60,
+    "in_register": 58,
+    "out_of_register": 2,
+    "accepted": 53,
+    "correct": 53,
+    "false_accepts": 0,
+    "precision": 1.0,
+    "recall": 0.9138,
+    "f1": 0.955,
+    "review": 6,
+    "review_top1_correct": 5,
+    "assisted_recall": 1.0,
+    "unmatched": 1,
+    "unmatched_missed": 0,
+    "out_of_register_rejected": 2
+  },
+  "by_source": {
+    "maintenance": {
+      "names": 33,
+      "in_register": 31,
+      "out_of_register": 2,
+      "accepted": 26,
+      "correct": 26,
+      "false_accepts": 0,
+      "precision": 1.0,
+      "recall": 0.8387,
+      "f1": 0.9123,
+      "review": 6,
+      "review_top1_correct": 5,
+      "assisted_recall": 1.0,
+      "unmatched": 1,
+      "unmatched_missed": 0,
+      "out_of_register_rejected": 2
+    },
+    "readings": {
+      "names": 27,
+      "in_register": 27,
+      "out_of_register": 0,
+      "accepted": 27,
+      "correct": 27,
+      "false_accepts": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "review": 0,
+      "review_top1_correct": 0,
+      "assisted_recall": 1.0,
+      "unmatched": 0,
+      "unmatched_missed": 0,
+      "out_of_register_rejected": 0
+    }
+  },
+  "exact_key_only_baseline": {
+    "names": 60,
+    "in_register": 58,
+    "out_of_register": 2,
+    "accepted": 52,
+    "correct": 52,
+    "false_accepts": 0,
+    "precision": 1.0,
+    "recall": 0.8966,
+    "f1": 0.9455,
+    "review": 0,
+    "review_top1_correct": 0,
+    "assisted_recall": 0.8966,
+    "unmatched": 8,
+    "unmatched_missed": 6,
+    "out_of_register_rejected": 2
+  },
+  "errors": [
+    {
+      "source": "maintenance",
+      "raw_name": "MPP-03B",
+      "status": "review",
+      "method": "fuzzy",
+      "confidence": 0.8,
+      "predicted": "Dosing Pump 3B",
+      "truth": "Dosing Pump 3B"
+    },
+    {
+      "source": "maintenance",
+      "raw_name": "Miexr Motor 1",
+      "status": "review",
+      "method": "fuzzy",
+      "confidence": 0.889,
+      "predicted": "Mixer Motor 1",
+      "truth": "Mixer Motor 1"
+    },
+    {
+      "source": "maintenance",
+      "raw_name": "P-1A",
+      "status": "review",
+      "method": "fuzzy",
+      "confidence": 0.75,
+      "predicted": "Feed Pump 1A",
+      "truth": "Feed Pump 1A"
+    },
+    {
+      "source": "maintenance",
+      "raw_name": "P-3A (north)",
+      "status": "review",
+      "method": "fuzzy",
+      "confidence": 0.75,
+      "predicted": "Feed Pump 3A",
+      "truth": "Feed Pump 3A"
+    },
+    {
+      "source": "maintenance",
+      "raw_name": "Pup 1A",
+      "status": "review",
+      "method": "fuzzy",
+      "confidence": 0.8,
+      "predicted": "Feed Pump 1A",
+      "truth": "Feed Pump 1A"
+    }
+  ]
+}

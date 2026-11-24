@@ -1,0 +1,11 @@
+asset_id,asset_name,sensor,anomalies,spikes,max_abs_z,last_alarm_at
+UNREG-MIXERMTR2,Mixer Motor 2,bearing_temperature,136,8,31.8,2026-09-19 23:30:00
+PMP-03A,Feed Pump 3A,bearing_temperature,133,8,33.8,2026-09-29 05:00:00
+CMP-01,Air Compressor 1,bearing_temperature,65,16,11.9,2026-09-28 23:00:00
+PMP-03A,Feed Pump 3A,discharge_pressure,12,24,17.1,2026-09-29 02:30:00
+PMP-03B,Dosing Pump 3B,discharge_pressure,6,12,17.4,2026-09-25 20:00:00
+MTR-01,Mixer Motor 1,bearing_temperature,4,8,27.5,2026-09-20 14:30:00
+CMP-02,Air Compressor 2,bearing_temperature,3,6,27.2,2026-09-22 04:00:00
+FAN-01,Cooling Fan 1,bearing_temperature,3,6,15.8,2026-09-29 09:30:00
+PMP-01A,Feed Pump 1A,bearing_temperature,3,6,15.1,2026-09-29 14:00:00
+PMP-01A,Feed Pump 1A,discharge_pressure,3,6,17.7,2026-09-22 07:30:00

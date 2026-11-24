@@ -1,0 +1,78 @@
+# Second onboarding config, written in about ten minutes to show that a new
+# customer is a config change. Different headers, UTC wall-clock timestamps,
+# a different register layout and a different sensor vocabulary.
+customer: plant_beta
+display_name: Plant Beta (synthetic)
+
+session:
+  timezone: UTC
+
+readings:
+  path: data/raw/plant_beta/sensor_feed.csv
+  columns:
+    timestamp: ts_utc
+    equipment: asset
+    sensor: measure
+    value: val
+    unit: uom
+  offset_formats: []
+  naive_formats:
+    - "yyyy-MM-dd HH:mm:ss"
+  naive_timezone: UTC
+  epoch_seconds: false
+  sensor_map:
+    "bearing temp": {name: bearing_temperature, quantity: temperature}
+    "discharge pressure": {name: discharge_pressure, quantity: pressure}
+  unit_conversions:
+    c:   {quantity: temperature, scale: 1.0, offset: 0.0}
+    bar: {quantity: pressure, scale: 100.0, offset: 0.0}
+  valid_range:
+    bearing_temperature: [-20.0, 150.0]
+    discharge_pressure: [0.0, 2000.0]
+  spike_delta:
+    bearing_temperature: 25.0
+    discharge_pressure: 300.0
+  gap_minutes: 120
+  baseline_days: 3
+  anomaly_z: 3.0
+
+maintenance:
+  path: data/raw/plant_beta/work_orders.csv
+  columns:
+    wo_number: WO
+    asset_text: Equipment
+    opened: Opened
+    activity_type: Type
+    is_failure: Failed
+  date_format: "yyyy-MM-dd HH:mm"
+  naive_timezone: UTC
+  failure_values: ["Y"]
+
+asset_register:
+  path: data/raw/plant_beta/asset_list.json
+  records_key: items
+  asset_id: code
+  name: description
+  alias_fields: []
+
+entity_resolution:
+  stopwords: [unit, asset, the]
+  abbreviations:
+    pump: pmp
+    compressor: cmp
+    motor: mtr
+  auto_accept: 0.92
+  review_min: 0.75
+  ambiguity_margin: 0.02
+
+evaluation:
+  ground_truth: data/raw/plant_beta/ground_truth_entities.csv   # labels written by the generator; optional
+
+dq_thresholds:
+  fail_on_breach: true
+  readings_null_value_rate_max: 0.02
+  readings_unmatched_asset_rate_max: 0.01
+  readings_duplicate_rate_max: 0.05
+  maintenance_unmatched_asset_rate_max: 0.10
+  maintenance_duplicate_rate_max: 0.10
+  register_missing_id_max: 2
